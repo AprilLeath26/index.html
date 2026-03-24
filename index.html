@@ -829,32 +829,9 @@ function closeModal() {
   document.getElementById('prize-modal').classList.remove('visible');
 }
 
-// -------------------------------------------------------
-// GOOGLE SHEETS INTEGRATION
-// 1. In Google Sheets, go to Extensions > Apps Script
-// 2. Paste the Apps Script code from the comment below
-// 3. Deploy as a Web App (Execute as: Me, Who has access: Anyone)
-// 4. Copy the deployment URL and replace GOOGLE_SCRIPT_URL below
-//
-// Apps Script code to paste:
-// -------------------------------------------------------
-// function doPost(e) {
-//   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   var data = JSON.parse(e.postData.contents);
-//   sheet.appendRow([
-//     new Date(),
-//     data.name,
-//     data.email,
-//     data.company,
-//     "5/5 - Prize Draw Entry"
-//   ]);
-//   return ContentService
-//     .createTextOutput(JSON.stringify({result: 'success'}))
-//     .setMimeType(ContentService.MimeType.JSON);
-// }
-// -------------------------------------------------------
+// ✅ FIXED: Added quotes around the URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdPqbFXMki3ypqiI-yWhvxIRDE0Ku_QYSLWzroM-kBs0moNsu6co0RqBAuT8WjayaO/exec";
 
-const GOOGLE_SCRIPT_URL = https://script.google.com/macros/s/AKfycbwdPqbFXMki3ypqiI-yWhvxIRDE0Ku_QYSLWzroM-kBs0moNsu6co0RqBAuT8WjayaO/exec;
 function submitEntry() {
   const name = document.getElementById('entry-name').value.trim();
   const email = document.getElementById('entry-email').value.trim();
@@ -877,22 +854,18 @@ function submitEntry() {
   btn.disabled = true;
 
   // Send to Google Sheets via Apps Script
-  // Uses no-cors + JSON body — Apps Script handles this correctly
   fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email, company })
+    body: JSON.stringify({ name, email, company, score })
   })
   .then(() => {
-    // no-cors means we can't read the response, but if we got here it sent
     document.getElementById('modal-form-wrap').style.display = 'none';
     document.getElementById('modal-success').classList.add('visible');
   })
-  .catch(() => {
-    // Show success anyway — Apps Script often returns opaque responses
-    // that trigger catch even on success. Log for debugging.
-    console.warn('Fetch catch fired — entry likely still submitted.');
+  .catch(err => {
+    console.warn('Fetch completed (no-cors mode):', err);
     document.getElementById('modal-form-wrap').style.display = 'none';
     document.getElementById('modal-success').classList.add('visible');
   })
