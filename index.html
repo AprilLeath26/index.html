@@ -902,9 +902,14 @@ function closeModal() {
 // -------------------------------------------------------
 // GOOGLE SHEETS INTEGRATION
 // 1. In Google Sheets, go to Extensions > Apps Script
-// 2. Paste the Apps Script code from the comment below
-// 3. Deploy as a Web App (Execute as: Me, Who has access: Anyone)
-// 4. Copy the deployment URL and replace GOOGLE_SCRIPT_URL below
+// 2. Replace all existing code with the function below
+// 3. Deploy as a Web App (Deploy > New deployment)
+//    - Type: Web app
+//    - Execute as: Me
+//    - Who has access: Anyone
+// 4. For updates, always deploy a NEW version
+//    (Deploy > Manage deployments > pencil icon > New version)
+// 5. The URL stays the same — no need to update this file
 //
 // Apps Script code to paste:
 // -------------------------------------------------------
@@ -916,7 +921,8 @@ function closeModal() {
 //     data.name,
 //     data.email,
 //     data.company,
-//     "5/5 - Prize Draw Entry"
+//     "5/5 - Prize Draw Entry",
+//     data.consent ? "Yes - Consented" : "No"
 //   ]);
 //   return ContentService
 //     .createTextOutput(JSON.stringify({result: 'success'}))
