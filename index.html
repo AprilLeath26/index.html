@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>EPAM Salesforce Prize Draw Quiz</title>
+<title>EPAM Salesforce LEGO Competition</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400&family=Nunito+Sans:wght@300;400;600;700;900&display=swap" rel="stylesheet"/>
 <style>
   :root {
@@ -33,7 +33,6 @@
     overflow-x: hidden;
   }
 
-  /* Background grid */
   body::before {
     content: '';
     position: fixed;
@@ -66,7 +65,6 @@
     padding: 0 24px 80px;
   }
 
-  /* HEADER */
   header {
     width: 100%;
     padding: 28px 0 32px;
@@ -81,7 +79,6 @@
     object-fit: contain;
   }
 
-  /* TITLE BLOCK */
   .title-block {
     text-align: center;
     margin-bottom: 56px;
@@ -107,9 +104,7 @@
     letter-spacing: -0.01em;
   }
 
-  .title-block h1 span {
-    color: var(--sf-sky);
-  }
+  .title-block h1 span { color: var(--sf-sky); }
 
   .title-block p {
     margin-top: 20px;
@@ -122,7 +117,6 @@
     margin-right: auto;
   }
 
-  /* START BUTTON */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -141,40 +135,8 @@
     clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
     transition: background 0.2s, transform 0.15s;
   }
-  .btn-primary:hover { background: var(--sf-sky); transform: translateY(-2px); }
+  .btn-primary:hover { background: var(--sf-sky); transform: translateY(-2px); color: var(--black); }
 
-  /* PROGRESS */
-  .progress-bar-wrap {
-    width: 100%;
-    height: 3px;
-    background: rgba(255,255,255,0.08);
-    margin-bottom: 40px;
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .progress-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--sf-blue), var(--sf-sky));
-    border-radius: 2px;
-    transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
-  }
-
-  .question-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 28px;
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
-  }
-
-  .question-meta .q-counter { color: var(--sf-sky); }
-
-  /* QUESTION CARD */
   .question-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -216,7 +178,6 @@
     color: var(--white);
   }
 
-  /* OPTIONS */
   .options-grid {
     display: grid;
     gap: 12px;
@@ -260,23 +221,12 @@
     transform: translateX(4px);
   }
 
-  .option-btn.correct {
-    border-color: var(--correct);
-    background: rgba(46,204,113,0.12);
-    color: var(--white);
-  }
+  .option-btn.correct { border-color: var(--correct); background: rgba(46,204,113,0.12); color: var(--white); }
   .option-btn.correct .opt-letter { color: var(--correct); }
-
-  .option-btn.wrong {
-    border-color: var(--wrong);
-    background: rgba(231,76,60,0.12);
-    color: rgba(255,255,255,0.6);
-  }
+  .option-btn.wrong { border-color: var(--wrong); background: rgba(231,76,60,0.12); color: rgba(255,255,255,0.6); }
   .option-btn.wrong .opt-letter { color: var(--wrong); }
-
   .option-btn:disabled { cursor: default; }
 
-  /* NEXT BUTTON */
   .btn-next {
     display: none;
     margin-top: 24px;
@@ -296,7 +246,6 @@
   .btn-next:hover { background: var(--sf-sky); color: var(--black); }
   .btn-next.visible { display: inline-flex; align-items: center; gap: 8px; }
 
-  /* FEEDBACK */
   .answer-feedback {
     display: none;
     margin-top: 20px;
@@ -318,41 +267,11 @@
     animation: fadeUp 0.6s ease both;
   }
 
-  .score-dial {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: conic-gradient(var(--sf-sky) calc(var(--pct) * 1%), var(--surface2) 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 32px;
-    position: relative;
-  }
-  .score-dial::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: var(--black);
-  }
-  .score-dial-inner {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-  }
-  .score-dial-inner .score-num {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 42px;
-    font-weight: 900;
-    color: var(--white);
+  .result-icon {
+    font-size: 72px;
+    display: block;
+    margin-bottom: 24px;
     line-height: 1;
-  }
-  .score-dial-inner .score-denom {
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-    font-weight: 500;
   }
 
   .results-title {
@@ -362,65 +281,14 @@
     text-transform: uppercase;
     margin-bottom: 10px;
   }
+  .results-title span { color: var(--sf-sky); }
+
   .results-subtitle {
     font-size: 15px;
     color: rgba(255,255,255,0.45);
     margin-bottom: 48px;
+    line-height: 1.6;
   }
-
-  /* REVIEW */
-  .review-list { text-align: left; margin-bottom: 48px; }
-  .review-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 24px 28px;
-    margin-bottom: 14px;
-    position: relative;
-    overflow: hidden;
-  }
-  .review-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-  }
-  .review-item.correct-review::before { background: var(--correct); }
-  .review-item.wrong-review::before { background: var(--wrong); }
-
-  .review-item .ri-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    margin-bottom: 12px;
-  }
-  .review-item .ri-q {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.3;
-  }
-  .review-item .ri-badge {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 2px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .ri-badge.correct { background: rgba(46,204,113,0.15); color: var(--correct); }
-  .ri-badge.wrong { background: rgba(231,76,60,0.15); color: var(--wrong); }
-
-  .review-item .ri-answer {
-    font-size: 13px;
-    color: rgba(255,255,255,0.5);
-  }
-  .review-item .ri-answer strong { color: rgba(255,255,255,0.8); }
 
   .btn-restart {
     padding: 16px 48px;
@@ -436,7 +304,7 @@
     clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
     transition: background 0.2s;
   }
-  .btn-restart:hover { background: var(--sf-sky); }
+  .btn-restart:hover { background: var(--sf-sky); color: var(--black); }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(18px); }
@@ -480,11 +348,7 @@
     background: linear-gradient(90deg, var(--sf-blue), var(--sf-sky));
   }
 
-  .modal-trophy {
-    font-size: 52px;
-    margin-bottom: 16px;
-    display: block;
-  }
+  .modal-trophy { font-size: 52px; margin-bottom: 16px; display: block; }
 
   .modal-title {
     font-family: 'Nunito Sans', sans-serif;
@@ -496,7 +360,6 @@
     margin-bottom: 12px;
     line-height: 1.15;
   }
-
   .modal-title span { color: var(--sf-sky); }
 
   .modal-body {
@@ -506,7 +369,6 @@
     line-height: 1.65;
     margin-bottom: 32px;
   }
-
   .modal-body strong { color: var(--white); }
 
   .modal-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
@@ -525,10 +387,8 @@
     transition: border-color 0.2s;
   }
   .modal-input::placeholder { color: rgba(255,255,255,0.25); }
-  .modal-input:focus,
-  .modal-select:focus { border-color: var(--sf-blue); }
+  .modal-input:focus, .modal-select:focus { border-color: var(--sf-blue); }
 
-  /* SELECT / DROPDOWN STYLING */
   .modal-select {
     appearance: none;
     -webkit-appearance: none;
@@ -539,14 +399,8 @@
     background-position: right 16px center;
     padding-right: 44px;
   }
-  .modal-select option {
-    background: var(--surface2);
-    color: var(--white);
-  }
-  /* Placeholder-style for unselected state */
-  .modal-select.placeholder {
-    color: rgba(255,255,255,0.25);
-  }
+  .modal-select option { background: var(--surface2); color: var(--white); }
+  .modal-select.placeholder { color: rgba(255,255,255,0.25); }
 
   .btn-enter {
     width: 100%;
@@ -578,31 +432,14 @@
   }
   .modal-skip:hover { color: rgba(255,255,255,0.6); }
 
-  .modal-success {
-    display: none;
-    animation: fadeUp 0.4s ease both;
-  }
+  .modal-success { display: none; animation: fadeUp 0.4s ease both; }
   .modal-success.visible { display: block; }
   .modal-success-icon { font-size: 44px; margin-bottom: 12px; display: block; }
-  .modal-success-text {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .modal-success-sub {
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.6;
-  }
+  .modal-success-text { font-family: 'Nunito Sans', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+  .modal-success-sub { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-  /* CONSENT CHECKBOX */
   .consent-wrap {
     display: flex;
     align-items: flex-start;
@@ -625,28 +462,17 @@
     position: relative;
     flex-shrink: 0;
   }
-
-  .consent-checkbox:checked {
-    background: var(--sf-blue);
-    border-color: var(--sf-blue);
-  }
-
+  .consent-checkbox:checked { background: var(--sf-blue); border-color: var(--sf-blue); }
   .consent-checkbox:checked::after {
     content: '';
     position: absolute;
-    left: 4px;
-    top: 1px;
-    width: 6px;
-    height: 10px;
+    left: 4px; top: 1px;
+    width: 6px; height: 10px;
     border: 2px solid #fff;
-    border-top: none;
-    border-left: none;
+    border-top: none; border-left: none;
     transform: rotate(45deg);
   }
-
-  .consent-checkbox.error {
-    border-color: var(--wrong);
-  }
+  .consent-checkbox.error { border-color: var(--wrong); }
 
   .consent-label {
     font-size: 11px;
@@ -654,22 +480,9 @@
     line-height: 1.6;
     cursor: pointer;
   }
+  .consent-label a { color: var(--sf-sky); text-decoration: underline; text-underline-offset: 2px; }
 
-  .consent-label a {
-    color: var(--sf-sky);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .consent-error {
-    display: none;
-    font-size: 11px;
-    color: var(--wrong);
-    margin-top: -16px;
-    margin-bottom: 16px;
-    text-align: left;
-  }
-
+  .consent-error { display: none; font-size: 11px; color: var(--wrong); margin-top: -16px; margin-bottom: 16px; text-align: left; }
   .consent-error.visible { display: block; }
 </style>
 </head>
@@ -688,171 +501,88 @@
 
   <!-- START SCREEN -->
   <div id="start-screen" class="title-block">
-    <div class="eyebrow">Prize Draw Quiz</div>
+    <div class="eyebrow">LEGO Competition</div>
     <h1>EPAM Salesforce<br/><span>Challenge</span></h1>
-    <p>Test your Salesforce knowledge for your chance to win! Answer 5 questions — your score will be revealed at the end.</p>
+    <p>Answer our question correctly for your chance to win one of <strong style="color:var(--white)">2 luxury LEGO kits</strong>! Get it right and you'll be entered into the prize draw.</p>
     <button class="btn-primary" onclick="startQuiz()">
-      Start Quiz
+      Take the Challenge
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
 
   <!-- QUIZ SCREEN -->
   <div id="quiz-screen" class="hidden">
-    <div class="progress-bar-wrap">
-      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
-    </div>
-    <div class="question-meta">
-      <span class="q-counter" id="q-counter">Question 1 of 5</span>
-      <span id="q-score-running">Score: 0</span>
-    </div>
     <div class="question-card">
-      <span class="question-type-badge" id="q-type-badge">Multiple Choice</span>
+      <span class="question-type-badge">Multiple Choice</span>
       <div class="question-text" id="question-text"></div>
     </div>
     <div class="options-grid" id="options-grid"></div>
     <div class="answer-feedback" id="answer-feedback"></div>
-    <button class="btn-next" id="btn-next" onclick="nextQuestion()">
-      Next
+    <button class="btn-next hidden" id="btn-next" onclick="showResults()">
+      See Result
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
   </div>
 
   <!-- RESULTS SCREEN -->
   <div id="results-screen" class="hidden results-screen">
-    <div class="score-dial" id="score-dial">
-      <div class="score-dial-inner">
-        <div class="score-num" id="score-num">0</div>
-        <div class="score-denom" id="score-denom">out of 5</div>
-      </div>
-    </div>
-    <div class="results-title" id="results-title">Well Done!</div>
+    <span class="result-icon" id="result-icon">🏆</span>
+    <div class="results-title" id="results-title">Correct!</div>
     <div class="results-subtitle" id="results-subtitle"></div>
-    <div class="review-list" id="review-list"></div>
     <button class="btn-restart" onclick="restartQuiz()">Try Again</button>
   </div>
 
 </div>
 
 <script>
-const questions = [
-  {
-    type: "mc",
-    question: "What does CRM stand for in the context of Salesforce?",
-    options: ["Customer Relationship Management", "Client Record Module", "Central Resource Manager", "Customer Revenue Monitoring"],
-    answer: 0,
-    explanation: "CRM stands for Customer Relationship Management — it's the core concept behind Salesforce. It helps businesses manage interactions with current and potential customers."
-  },
-  {
-    type: "tf",
-    question: "True or False: Salesforce Sales Cloud is primarily designed to help sales teams manage leads, opportunities, and customer accounts.",
-    options: ["True", "False"],
-    answer: 0,
-    explanation: "True! Sales Cloud is Salesforce's flagship product designed specifically to support sales teams — tracking leads as they move through the pipeline, managing accounts, and closing deals as Opportunities."
-  },
-  {
-    type: "mc",
-    question: "Which Salesforce product would a company most likely use to manage customer service cases and support tickets?",
-    options: ["Marketing Cloud", "Sales Cloud", "Service Cloud", "Commerce Cloud"],
-    answer: 2,
-    explanation: "Service Cloud is built for customer support teams. It allows agents to manage incoming cases (support requests) across channels like email, phone, and chat — all in one place."
-  },
-  {
-    type: "tf",
-    question: "True or False: Salesforce renamed Data Cloud to 'Data 360' at Dreamforce 2025, making it part of the wider Agentforce 360 suite.",
-    options: ["True", "False"],
-    answer: 0,
-    explanation: "True! At Dreamforce 2025 in October, Salesforce officially renamed Data Cloud to Data 360. It's actually the sixth name for this product — previously known as Salesforce CDP, Salesforce Genie, and others. The rename signals its new role as the core data layer powering AI agents within the Agentforce 360 suite."
-  },
-  {
-    type: "mc",
-    question: "What best describes Salesforce Agentforce?",
-    options: [
-      "A chatbot builder for customer service websites",
-      "A platform for deploying autonomous AI agents that can reason, act, and complete business tasks independently",
-      "Salesforce's email marketing automation tool",
-      "A reporting and dashboard tool built into Sales Cloud"
-    ],
-    answer: 1,
-    explanation: "Agentforce is Salesforce's autonomous AI agent platform, launched in 2024. Unlike basic chatbots, Agentforce agents can reason, plan, and take real actions — such as updating records, resolving cases, or booking meetings — without human input, using your CRM data as context."
-  }
-];
+const question = {
+  question: "How many Salesforce certified experts does EPAM have?",
+  options: ["3", "300", "Over 3,000"],
+  answer: 2,
+  explanation: "EPAM has over 3,000 Salesforce certified experts globally — making us one of the largest Salesforce partners in the world. That depth of expertise means we can tackle projects of any scale, from quick implementations to complex enterprise transformations."
+};
 
-let currentQ = 0;
-let score = 0;
-let userAnswers = [];
+let answered = false;
+let isCorrect = false;
 
 function startQuiz() {
   document.getElementById('start-screen').classList.add('hidden');
-  document.getElementById('quiz-screen').classList.remove('hidden');
-  renderQuestion();
-}
+  const quizScreen = document.getElementById('quiz-screen');
+  quizScreen.classList.remove('hidden');
 
-function renderQuestion() {
-  const q = questions[currentQ];
-  const total = questions.length;
-
-  document.getElementById('progress-bar').style.width = ((currentQ / total) * 100) + '%';
-  document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${total}`;
-  document.getElementById('q-score-running').textContent = `Score: ${score}`;
-  document.getElementById('q-type-badge').textContent = q.type === 'tf' ? 'True / False' : 'Multiple Choice';
-  document.getElementById('question-text').textContent = q.question;
+  document.getElementById('question-text').textContent = question.question;
 
   const grid = document.getElementById('options-grid');
   grid.innerHTML = '';
-  const letters = ['A','B','C','D'];
-  q.options.forEach((opt, i) => {
+  const letters = ['A', 'B', 'C'];
+  question.options.forEach((opt, i) => {
     const btn = document.createElement('button');
     btn.className = 'option-btn';
-    btn.innerHTML = `<span class="opt-letter">${q.type === 'tf' ? (i === 0 ? 'T' : 'F') : letters[i]}</span>${opt}`;
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span>${opt}`;
     btn.onclick = () => selectAnswer(i);
     grid.appendChild(btn);
   });
-
-  const fb = document.getElementById('answer-feedback');
-  fb.className = 'answer-feedback';
-  fb.textContent = '';
-
-  const nextBtn = document.getElementById('btn-next');
-  nextBtn.className = 'btn-next';
-  nextBtn.textContent = currentQ === total - 1 ? 'See Results ' : 'Next ';
-  nextBtn.innerHTML += `<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
-  // Re-trigger animation
-  document.querySelector('.question-card').style.animation = 'none';
-  document.querySelector('.question-card').offsetHeight;
-  document.querySelector('.question-card').style.animation = '';
 }
 
 function selectAnswer(selected) {
-  const q = questions[currentQ];
-  const buttons = document.querySelectorAll('.option-btn');
-  const isCorrect = selected === q.answer;
+  if (answered) return;
+  answered = true;
+  isCorrect = selected === question.answer;
 
+  const buttons = document.querySelectorAll('.option-btn');
   buttons.forEach((btn, i) => {
     btn.disabled = true;
-    if (i === q.answer) btn.classList.add('correct');
+    if (i === question.answer) btn.classList.add('correct');
     else if (i === selected && !isCorrect) btn.classList.add('wrong');
   });
 
-  if (isCorrect) score++;
-  userAnswers.push({ selected, correct: isCorrect });
-
   const fb = document.getElementById('answer-feedback');
   fb.className = `answer-feedback ${isCorrect ? 'correct' : 'wrong'} visible`;
-  fb.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Not quite.'}</strong> ${q.explanation}`;
+  fb.innerHTML = `<strong>${isCorrect ? '✓ Correct!' : '✗ Not quite.'}</strong> ${question.explanation}`;
 
-  document.getElementById('btn-next').classList.add('visible');
-  document.getElementById('q-score-running').textContent = `Score: ${score}`;
-}
-
-function nextQuestion() {
-  currentQ++;
-  if (currentQ >= questions.length) {
-    showResults();
-  } else {
-    renderQuestion();
-  }
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.classList.remove('hidden');
+  nextBtn.classList.add('visible');
 }
 
 function showResults() {
@@ -860,57 +590,38 @@ function showResults() {
   const rs = document.getElementById('results-screen');
   rs.classList.remove('hidden');
 
-  const total = questions.length;
-  const pct = Math.round((score / total) * 100);
-
-  // Trigger prize draw modal for perfect score
-  if (score === total) {
-    setTimeout(showPrizeModal, 1200);
+  if (isCorrect) {
+    document.getElementById('result-icon').textContent = '🏆';
+    document.getElementById('results-title').innerHTML = 'Correct! <span>You\'re In!</span>';
+    document.getElementById('results-subtitle').textContent = 'You got it right — enter your details for your chance to win a luxury LEGO kit.';
+    setTimeout(showPrizeModal, 800);
+  } else {
+    document.getElementById('result-icon').textContent = '😅';
+    document.getElementById('results-title').textContent = 'Not Quite!';
+    document.getElementById('results-subtitle').textContent = 'EPAM has over 3,000 Salesforce certified experts globally. Why not have another go?';
   }
-
-  document.getElementById('score-dial').style.setProperty('--pct', pct);
-  document.getElementById('score-num').textContent = score;
-  document.getElementById('score-denom').textContent = `out of ${total}`;
-  document.getElementById('progress-bar').style.width = '100%';
-
-  let title, subtitle;
-  if (score === total) { title = 'Perfect Score! 🏆'; subtitle = 'Outstanding — you really know your Salesforce!'; }
-  else if (score >= 4) { title = 'Excellent Work!'; subtitle = 'You clearly know your way around the Salesforce ecosystem.'; }
-  else if (score >= 3) { title = 'Good Effort!'; subtitle = 'Solid knowledge — keep exploring Trailhead to learn more.'; }
-  else if (score >= 2) { title = 'A Good Start!'; subtitle = 'There\'s more to discover — why not try Salesforce Trailhead?'; }
-  else { title = 'Keep Learning!'; subtitle = 'Check out Salesforce Trailhead — it\'s free and great for beginners.'; }
-
-  document.getElementById('results-title').textContent = title;
-  document.getElementById('results-subtitle').textContent = subtitle;
-
-  const reviewList = document.getElementById('review-list');
-  reviewList.innerHTML = '';
-  questions.forEach((q, i) => {
-    const ua = userAnswers[i];
-    const div = document.createElement('div');
-    div.className = `review-item ${ua.correct ? 'correct-review' : 'wrong-review'}`;
-    div.innerHTML = `
-      <div class="ri-header">
-        <div class="ri-q">${q.question}</div>
-        <span class="ri-badge ${ua.correct ? 'correct' : 'wrong'}">${ua.correct ? 'Correct' : 'Incorrect'}</span>
-      </div>
-      <div class="ri-answer">
-        ${!ua.correct ? `<span>Your answer: <strong>${q.options[ua.selected]}</strong> &nbsp;|&nbsp; </span>` : ''}
-        Correct answer: <strong>${q.options[q.answer]}</strong>
-      </div>
-    `;
-    reviewList.appendChild(div);
-  });
 }
 
 function restartQuiz() {
-  currentQ = 0;
-  score = 0;
-  userAnswers = [];
+  answered = false;
+  isCorrect = false;
   document.getElementById('results-screen').classList.add('hidden');
+  document.getElementById('answer-feedback').className = 'answer-feedback';
+  document.getElementById('btn-next').classList.add('hidden');
+  document.getElementById('btn-next').classList.remove('visible');
   document.getElementById('quiz-screen').classList.remove('hidden');
-  document.getElementById('progress-bar').style.width = '0%';
-  renderQuestion();
+
+  // Re-render options
+  const grid = document.getElementById('options-grid');
+  grid.innerHTML = '';
+  const letters = ['A', 'B', 'C'];
+  question.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="opt-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => selectAnswer(i);
+    grid.appendChild(btn);
+  });
 }
 
 function showPrizeModal() {
@@ -921,39 +632,6 @@ function closeModal() {
   document.getElementById('prize-modal').classList.remove('visible');
 }
 
-// -------------------------------------------------------
-// GOOGLE SHEETS INTEGRATION
-// 1. In Google Sheets, go to Extensions > Apps Script
-// 2. Replace all existing code with the function below
-// 3. Deploy as a Web App (Deploy > New deployment)
-//    - Type: Web app
-//    - Execute as: Me
-//    - Who has access: Anyone
-// 4. For updates, always deploy a NEW version
-//    (Deploy > Manage deployments > pencil icon > New version)
-// 5. The URL stays the same — no need to update this file
-//
-// Apps Script code to paste:
-// -------------------------------------------------------
-// function doPost(e) {
-//   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-//   var data = JSON.parse(e.postData.contents);
-//   sheet.appendRow([
-//     new Date(),
-//     data.name,
-//     data.email,
-//     data.company,
-//     data.jobTitle,
-//     data.country,
-//     "5/5 - Prize Draw Entry",
-//     data.consent ? "Yes - Consented" : "No"
-//   ]);
-//   return ContentService
-//     .createTextOutput(JSON.stringify({result: 'success'}))
-//     .setMimeType(ContentService.MimeType.JSON);
-// }
-// -------------------------------------------------------
-
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdPqbFXMki3ypqiI-yWhvxIRDE0Ku_QYSLWzroM-kBs0moNsu6co0RqBAuT8WjayaO/exec';
 
 function submitEntry() {
@@ -961,19 +639,25 @@ function submitEntry() {
   const email = document.getElementById('entry-email').value.trim();
   const company = document.getElementById('entry-company').value.trim();
   const jobTitle = document.getElementById('entry-jobtitle').value.trim();
-  const country = document.getElementById('entry-country').value;
+  const countryRaw = document.getElementById('entry-country').value;
+  const countryOther = document.getElementById('entry-country-other').value.trim();
+  const country = countryRaw === 'Other' ? (countryOther || '') : countryRaw;
   const consent = document.getElementById('consent-checkbox').checked;
   const btn = document.querySelector('.btn-enter');
 
-  // Validate fields
   let hasError = false;
   document.getElementById('entry-name').style.borderColor = !name ? 'var(--wrong)' : 'var(--border)';
   document.getElementById('entry-email').style.borderColor = !email ? 'var(--wrong)' : 'var(--border)';
   document.getElementById('entry-jobtitle').style.borderColor = !jobTitle ? 'var(--wrong)' : 'var(--border)';
   document.getElementById('entry-country').style.borderColor = !country ? 'var(--wrong)' : 'var(--border)';
-  if (!name || !email || !jobTitle || !country) hasError = true;
+  if (countryRaw === 'Other' && !countryOther) {
+    document.getElementById('entry-country-other').style.borderColor = 'var(--wrong)';
+    hasError = true;
+  } else {
+    document.getElementById('entry-country-other').style.borderColor = 'var(--border)';
+  }
+  if (!name || !email || !jobTitle || !countryRaw) hasError = true;
 
-  // Validate consent
   const consentError = document.getElementById('consent-error');
   const consentBox = document.getElementById('consent-checkbox');
   if (!consent) {
@@ -987,17 +671,14 @@ function submitEntry() {
 
   if (hasError) return;
 
-  // Reset borders
   document.getElementById('entry-name').style.borderColor = 'var(--border)';
   document.getElementById('entry-email').style.borderColor = 'var(--border)';
   document.getElementById('entry-jobtitle').style.borderColor = 'var(--border)';
   document.getElementById('entry-country').style.borderColor = 'var(--border)';
 
-  // Loading state
   btn.textContent = 'Submitting...';
   btn.disabled = true;
 
-  // Send to Google Sheets via Apps Script
   fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -1009,7 +690,6 @@ function submitEntry() {
     document.getElementById('modal-success').classList.add('visible');
   })
   .catch(() => {
-    console.warn('Fetch catch fired — entry likely still submitted.');
     document.getElementById('modal-form-wrap').style.display = 'none';
     document.getElementById('modal-success').classList.add('visible');
   })
@@ -1019,20 +699,21 @@ function submitEntry() {
   });
 }
 
-// Handle country dropdown placeholder styling
 document.addEventListener('DOMContentLoaded', function() {
   const countrySelect = document.getElementById('entry-country');
   countrySelect.classList.add('placeholder');
   countrySelect.addEventListener('change', function() {
-    if (this.value) {
-      this.classList.remove('placeholder');
+    this.classList.toggle('placeholder', !this.value);
+    const otherField = document.getElementById('entry-country-other');
+    if (this.value === 'Other') {
+      otherField.style.display = 'block';
     } else {
-      this.classList.add('placeholder');
+      otherField.style.display = 'none';
+      otherField.value = '';
     }
   });
 });
 
-// Close modal if clicking the overlay background
 document.getElementById('prize-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
@@ -1042,9 +723,9 @@ document.getElementById('prize-modal').addEventListener('click', function(e) {
 <div class="modal-overlay" id="prize-modal">
   <div class="modal-box">
     <span class="modal-trophy">🏆</span>
-    <div class="modal-title">Perfect Score!<br/><span>You're In!</span></div>
+    <div class="modal-title">You Got It!<br/><span>Enter to Win</span></div>
     <div class="modal-body">
-      You answered all 5 questions correctly — you qualify to enter our prize draw to win one of <strong>2 luxury LEGO kits</strong>!<br/><br/>
+      You answered correctly — you qualify to enter our prize draw to win one of <strong>2 luxury LEGO kits</strong>!<br/><br/>
       Enter your details below and we'll be in touch if you're a winner.
     </div>
 
@@ -1056,19 +737,56 @@ document.getElementById('prize-modal').addEventListener('click', function(e) {
         <input class="modal-input" id="entry-jobtitle" type="text" placeholder="Job title" autocomplete="organization-title"/>
         <select class="modal-select placeholder" id="entry-country" autocomplete="country">
           <option value="" disabled selected>Country</option>
+          <option value="Albania">Albania</option>
+          <option value="Andorra">Andorra</option>
           <option value="Austria">Austria</option>
+          <option value="Belarus">Belarus</option>
           <option value="Belgium">Belgium</option>
+          <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+          <option value="Bulgaria">Bulgaria</option>
+          <option value="Canada">Canada</option>
+          <option value="Croatia">Croatia</option>
+          <option value="Cyprus">Cyprus</option>
+          <option value="Czech Republic">Czech Republic</option>
           <option value="Denmark">Denmark</option>
+          <option value="Estonia">Estonia</option>
           <option value="Finland">Finland</option>
           <option value="France">France</option>
           <option value="Germany">Germany</option>
+          <option value="Greece">Greece</option>
+          <option value="Hungary">Hungary</option>
           <option value="Iceland">Iceland</option>
+          <option value="India">India</option>
           <option value="Ireland">Ireland</option>
+          <option value="Italy">Italy</option>
+          <option value="Kosovo">Kosovo</option>
+          <option value="Latvia">Latvia</option>
+          <option value="Liechtenstein">Liechtenstein</option>
+          <option value="Lithuania">Lithuania</option>
+          <option value="Luxembourg">Luxembourg</option>
+          <option value="Malta">Malta</option>
+          <option value="Moldova">Moldova</option>
+          <option value="Monaco">Monaco</option>
+          <option value="Montenegro">Montenegro</option>
           <option value="Netherlands">Netherlands</option>
+          <option value="North Macedonia">North Macedonia</option>
+          <option value="Norway">Norway</option>
+          <option value="Poland">Poland</option>
+          <option value="Portugal">Portugal</option>
+          <option value="Romania">Romania</option>
+          <option value="San Marino">San Marino</option>
+          <option value="Serbia">Serbia</option>
+          <option value="Slovakia">Slovakia</option>
+          <option value="Slovenia">Slovenia</option>
+          <option value="Spain">Spain</option>
           <option value="Sweden">Sweden</option>
           <option value="Switzerland">Switzerland</option>
+          <option value="Ukraine">Ukraine</option>
           <option value="United Kingdom">United Kingdom</option>
+          <option value="United States">United States</option>
+          <option value="Other">Other</option>
         </select>
+        <input class="modal-input" id="entry-country-other" type="text" placeholder="Please specify your country" style="display:none;"/>
       </div>
       <div class="consent-wrap">
         <input class="consent-checkbox" type="checkbox" id="consent-checkbox"/>
